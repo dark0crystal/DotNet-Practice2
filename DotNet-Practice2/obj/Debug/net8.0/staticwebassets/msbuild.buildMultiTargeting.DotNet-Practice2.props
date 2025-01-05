@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/DotNet-Practice2.props" />
+</Project>
