@@ -28,3 +28,4 @@
 /Users/almardas/RiderProjects/DotNet-Practice2/DotNet-Practice2/obj/Debug/net8.0/DotNet-Practice2.pdb
 /Users/almardas/RiderProjects/DotNet-Practice2/DotNet-Practice2/obj/Debug/net8.0/DotNet-Practice2.genruntimeconfig.cache
 /Users/almardas/RiderProjects/DotNet-Practice2/DotNet-Practice2/obj/Debug/net8.0/ref/DotNet-Practice2.dll
+/Users/almardas/RiderProjects/DotNet-Practice2/DotNet-Practice2/obj/Debug/net8.0/DotNet-Practice2.sourcelink.json

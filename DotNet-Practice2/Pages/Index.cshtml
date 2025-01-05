@@ -4,7 +4,64 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@{
+    string[] arr = { "space" , "comma","full stop","dash"};
+}
+
+
+<div class="main-div">
+    <div>
+        <h>Split The sentence</h>
+    </div>
+    @if (ViewData["sentence"] != null)
+    {
+        <div>
+            <h1>@ViewData["sentence"]</h1>
+        </div>
+    }
+    <div>
+        
+    </div>
+    <div>
+        <form method="post" action="">
+            <div>
+                <label>Enter a sentence</label>
+                <input type="text" name="sentence"/>
+            </div>
+            <div>
+                <label>What split Character:</label>
+                <select name="split-character">
+                    @foreach (var t in arr)
+                    {
+                        <div>
+                            <option value={@t}>
+                                @t
+                            </option>
+                        </div>
+                    }
+                </select>
+            </div>
+            
+            <input type="submit" value="Submit"/>
+        </form>
+    </div>
+
+    <div>
+        <h1></h1>
+    </div>
+    <div class="">
+        <form method="post" action="">
+            <input type="text" name="sentence"/>
+            <input type="submit" value="Submit"/>
+        </form>
+    </div>
+    
+    <div>
+        <h1>Sentences Example just copy and paste for of practice:</h1>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+    </div>
+   
 </div>
