@@ -12,19 +12,40 @@ public class IndexModel : PageModel
         _logger = logger;
     }
 
-    public void OnGet()
-    {
-        
-    }
+    public string[] SplitResult { get; set; }
 
     public void OnPost()
     {
-        if (HttpContext.Request.Query["sentence"].Count > 0)
+        string sentence = Request.Form["sentence"];
+        string splitCharacter = Request.Form["split-character"];
+        char sep;
+        switch (splitCharacter)
         {
-            string sentence =Request.Form["sentence"];
+            case "space":
+                sep = ' ';
+                break;
+            case "comma":
+                sep = ',';
+                break;
+            case "full stop":
+                sep = '.';
+                break;
+            case "dash":
+                sep = '-';
+                break;
+            default:
+                sep = ' ';
+                break;
+        }
+        // Handle splitting logic
+        if (!string.IsNullOrEmpty(sentence))
+        { 
+            SplitResult = sentence.Split(sep);
+
+            // SplitResult = sentence.Split(delimiter, StringSplitOptions.RemoveEmptyEntries);
             ViewData["sentence"] = sentence;
-            string splitCharacter = Request.Form["split-character"];
-            Console.WriteLine(sentence);
+            ViewData["splitCharacter"] = splitCharacter;
+            ViewData["splitResult"] = SplitResult;
         }
     }
 }
