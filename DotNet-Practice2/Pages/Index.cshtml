@@ -2,66 +2,95 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    string[] arr = { "space", "comma", "full stop", "dash" };
 }
 
-@{
-    string[] arr = { "space" , "comma","full stop","dash"};
-}
+<style>
+    .main-div {
+        
+        background: #86b7fe;
+        padding: 20px;
+        width: 80%;
+        margin-top: 100px;
+        font-family: Arial, sans-serif;
+    }
 
+    .form-style {
+        margin-bottom: 20px;
+        padding: 10px;
+        background: #e9ecef;
+        border-radius: 5px;
+    }
+
+    .split-result {
+        background: #d4edda;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    select {
+        width: 100%;
+        padding: 5px;
+        margin: 5px 0 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    input[type="submit"] {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background: #0056b3;
+    }
+</style>
 
 <div class="main-div">
-    <div>
-        <h>Split The sentence</h>
-    </div>
-    @if (ViewData["sentence"] != null)
+    <h1>Split the Sentence</h1>
+
+    <form method="post" class="form-style">
+        <label for="sentence">Enter a sentence:</label>
+        <input type="text" name="sentence" placeholder="Type your sentence here" required />
+
+        <label for="split-character">Choose a split character:</label>
+        <select name="split-character" required>
+            @foreach (var t in arr)
+            {
+                <option value="@t">@t</option>
+            }
+        </select>
+
+        <input type="submit" value="Split" />
+    </form>
+
+    @if (ViewData["splitResult"] != null)
     {
-        <div>
-            <h1>@ViewData["sentence"]</h1>
+        <div class="split-result">
+            <h2>Split Result:</h2>
+            <ul>
+                @foreach (var part in (string[])ViewData["splitResult"])
+                {
+                    <li>@part</li>
+                }
+            </ul>
         </div>
     }
-    <div>
-        
-    </div>
-    <div>
-        <form method="post" action="">
-            <div>
-                <label>Enter a sentence</label>
-                <input type="text" name="sentence"/>
-            </div>
-            <div>
-                <label>What split Character:</label>
-                <select name="split-character">
-                    @foreach (var t in arr)
-                    {
-                        <div>
-                            <option value={@t}>
-                                @t
-                            </option>
-                        </div>
-                    }
-                </select>
-            </div>
-            
-            <input type="submit" value="Submit"/>
-        </form>
-    </div>
 
-    <div>
-        <h1></h1>
-    </div>
-    <div class="">
-        <form method="post" action="">
-            <input type="text" name="sentence"/>
-            <input type="submit" value="Submit"/>
-        </form>
-    </div>
-    
-    <div>
-        <h1>Sentences Example just copy and paste for of practice:</h1>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
-    </div>
-   
+    <h2>Examples of Sentences for Practice:</h2>
+    <ul>
+        <li>This is a test sentence. Split it by spaces!</li>
+        <li>Comma,separated,values,are,everywhere.</li>
+        <li>Full stop. Another full stop. Keep going.</li>
+        <li>Dash-separated-words-are-fun.</li>
+    </ul>
 </div>
